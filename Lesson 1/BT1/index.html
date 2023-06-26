@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Validate Email</title>
+</head>
+<body>
+  <script src="script.js"></script>
+  <script>
+    var email1 = 'a@gmail.com';
+    var email2 = 'ab@yahoo.com';
+    var email3 = 'abc@hotmail.com';
+    var email4 = '@gmail.com';
+    var email5 = 'ab@gmail.';
+    var email6 = '@#abc@gmail.com';
+
+    console.log(isValidEmail(email1)); // true
+    console.log(isValidEmail(email2)); // true
+    console.log(isValidEmail(email3)); // true
+    console.log(isValidEmail(email4)); // false
+    console.log(isValidEmail(email5)); // false
+    console.log(isValidEmail(email6)); // false
+  </script>
+</body>
+</html>
