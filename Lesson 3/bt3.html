@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+            class ThongTin {
+                constructor(ten, moTa) {
+                    this.ten = ten;
+                    this.moTa = moTa;
+                }
+
+                tinhToan(thamSo = 1) {
+                    return thamSo * 3;
+                }
+                }
+
+            class HinhHoc extends ThongTin {
+            constructor(ten, moTa, chieuDai) {
+                super(ten, moTa);
+                this.chieuDai = chieuDai;
+            }
+
+            // Ghi đè phương thức tinhToan của lớp cha
+            tinhToan(thamSo) {
+                return this.chieuDai * super.tinhToan(thamSo);
+            }
+            }
+            const hinhHoc1 = new HinhHoc("Hình vuông", "Hình có 4 cạnh bằng nhau", 5);
+            const hinhHoc2 = new HinhHoc("Hình chữ nhật", "Hình có 2 cạnh bằng nhau", 8);
+
+            console.log("Thông tin hình học 1:");
+            console.log("Tên hình: ", hinhHoc1.ten);
+            console.log("Mô tả: ", hinhHoc1.moTa);
+            console.log("Chiều dài: ", hinhHoc1.chieuDai);
+            console.log("Kết quả tính toán với tham số mặc định (1): ", hinhHoc1.tinhToan()); // Kết quả: 5 * 3 = 15
+            console.log("Kết quả tính toán với tham số 2: ", hinhHoc1.tinhToan(2)); // Kết quả: 5 * (2 * 3) = 30
+
+            console.log("\nThông tin hình học 2:");
+            console.log("Tên hình: ", hinhHoc2.ten);
+            console.log("Mô tả: ", hinhHoc2.moTa);
+            console.log("Chiều dài: ", hinhHoc2.chieuDai);
+            console.log("Kết quả tính toán với tham số mặc định (1): ", hinhHoc2.tinhToan()); // Kết quả: 8 * 3 = 24
+            console.log("Kết quả tính toán với tham số 2: ", hinhHoc2.tinhToan(2)); // Kết quả: 8 * (2 * 3) = 48
+    </script>
+</body>
+</html>

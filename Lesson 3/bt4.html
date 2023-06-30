@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class Person {
+            constructor(name) {
+                this._name = name;
+            }
+
+            get name() {
+                return this._name;
+            }
+
+            set name(newName) {
+                this._name = newName;
+            }
+
+            walk() {
+                console.log(`${this._name} is walking.`);
+            }
+         }
+        class Programmer extends Person {
+            constructor(name, ngonNguLapTrinh) {
+                super(name);
+                this._ngonNguLapTrinh = ngonNguLapTrinh;
+            }
+
+            get ngonNguLapTrinh() {
+                return this._ngonNguLapTrinh;
+            }
+
+            set ngonNguLapTrinh(newLanguage) {
+                this._ngonNguLapTrinh = newLanguage;
+            }
+
+            writeCode() {
+                console.log(`${this._name} is writing code in ${this._ngonNguLapTrinh}.`);
+            }
+        }
+
+        const programmer1 = new Programmer("John", "JavaScript");
+        programmer1.walk(); 
+        programmer1.writeCode(); 
+
+        console.log("Tên: ", programmer1.name); 
+        console.log("Ngôn ngữ lập trình: ", programmer1.ngonNguLapTrinh); 
+
+        programmer1.name = "Alice";
+        programmer1.ngonNguLapTrinh = "Python";
+
+        console.log("Tên mới: ", programmer1.name); 
+        console.log("Ngôn ngữ lập trình mới: ", programmer1.ngonNguLapTrinh); 
+    </script>
+</body>
+</html>

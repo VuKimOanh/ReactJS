@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        const conVat = [ 'Răn', 'Lợn', 'Hổ', 'Sư Tử']
+
+        const danhSachDongVat = new Set(conVat);
+
+        danhSachDongVat.add('Hổ');
+        danhSachDongVat.add('Sư tử');
+        danhSachDongVat.add('Gấu');
+        danhSachDongVat.add('Gấu');
+
+        console.log(danhSachDongVat.has('Hổ')); // true
+        console.log(danhSachDongVat.has('Chó')); // false
+
+        danhSachDongVat.delete('Sư tử');
+
+        // console.log([...danhSachDongVat]);
+
+        console.log("Danh sách động vật:");
+        for (const dongVat of danhSachDongVat) {
+        console.log(dongVat);
+        }
+    </script>
+</body>
+</html>
