@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .search-container {
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        input[type="text"] {
+            width: 200px;
+            padding: 5px;
+        }
+
+        button {
+            padding: 5px 10px;
+            margin-left: 10px;
+        }
+
+        #resultContainer {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 10px;
+            width: 100%;
+        }
+
+        #resultContainer img {
+            margin: 0;
+            flex-grow: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Giphy Search</h1>
+        <div class="search-container">
+          <input type="text" id="keyword" placeholder="Enter keyword">
+          <button id="searchBtn">Search</button>
+          <button id="clearBtn">Clear</button>
+        </div>
+        <div id="resultContainer"></div>
+      </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        document.getElementById('searchBtn').addEventListener('click', function() {
+            const keyword = document.getElementById('keyword').value;
+            axios.get('https://api.giphy.com/v1/gifs/search', {
+            params: {
+                q: keyword,
+                api_key: 'FZ4vB8kvOWvb76w8YGnWom8yPIiIvjqY'
+            }
+            })
+            .then(function(response) {
+            const gifs = response.data.data;
+            const resultContainer = document.getElementById('resultContainer');
+            resultContainer.innerHTML = '';
+            gifs.forEach(function(gif) {
+                const img = document.createElement('img');
+                img.src = gif.images.fixed_height.url;
+                resultContainer.appendChild(img);
+            });
+            })
+            .catch(function(error) {
+            console.log(error);
+            });
+        });
+
+        document.getElementById('clearBtn').addEventListener('click', function() {
+            const resultContainer = document.getElementById('resultContainer');
+            resultContainer.innerHTML = '';
+        });
+        
+    </script>
+</body>
+</html>
